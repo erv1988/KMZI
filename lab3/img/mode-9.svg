@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="fill:none;stroke:#000;stroke-width: 2px" width="1422" height="425">
+	<title>Расшифрование в режиме обратной связи по выходу</title>
+	<style type="text/css">
+	text {text-anchor:middle; stroke:none;fill:#000; font-family: Helvetica; font-size: 22px;}
+	.arrow {marker-end: url(#cap);}
+	</style>
+	<defs>
+		<g id="xor">
+			<circle cx="15" cy="15" r="15"/>
+			<path d="M 15 0 v 30 M 0 15 h 30"/>
+		</g>
+		<marker id="cap" orient="auto" markerWidth="25" markerHeight="14" refY="3">
+			<path style="stroke:none;fill:#000;" d="m 0 0 v 6 l 9 -3 z"/>
+		</marker>
+		<path id="cells" d="M 0 0 h 210 v 30 h -210 z m 30 0 v 30 m 30 0 v -30 m 30 0 v 30 m 30 0 v -30 m 30 0 v 30 m 30 0 v -30 m 30 0 v 30"/>
+	</defs>
+
+	<text x="347" y="39">Вектор</text>
+	<text x="347" y="62">инициализации</text>
+	<use xlink:href="#cells" x="242" y="73"/>
+	<path class="arrow" d="M 347 103 v 20"/>
+
+	<g id="stage1">
+		<text x="192" y="160">Ключ</text>
+		<path class="arrow" d="M 164 171 h 60"/>
+
+		<rect x="242" y="141" width="210" height="60"/>
+		<text x="347" y="167">Процедура</text>
+		<text x="347" y="190">шифрования</text>
+
+		<path d="M 347 201 v 60"/>
+		<use xlink:href="#xor" x="332" y="261"/>
+		<path class="arrow" d="M 347 291 v 10"/>
+
+		<text x="135" y="227">Зашифрованный</text>
+		<text x="135" y="250">текст</text>
+		<use xlink:href="#cells" x="30" y="261"/>
+
+		<path class="arrow" d="M 240 276 h 74"/>
+
+		<use xlink:href="#cells" x="242" y="319"/>
+		<text x="345" y="375">Открытый текст</text>
+	</g>
+
+	<g id="stage2">
+		<use xlink:href="#stage1" x="468"/>
+		<path class="arrow" d="M 347 231 h 128 v -126 H 815 v 18"/>
+	</g>
+
+	<use xlink:href="#stage2" x="468"/>
+</svg>
